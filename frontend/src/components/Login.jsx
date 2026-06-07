@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css"
 
 import { INPUTWRAPPER, BUTTON_CLASSES } from '../assets/dummy'
 
+
 // Dummy data and repeated CSS
 const INITIAL_FORM = { email: "", password: "" }
 
@@ -16,7 +17,8 @@ const Login = ({ onSubmit, onSwitchMode }) => {
   const [rememberMe, setRememberMe] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = "http://localhost:4000"
+  const url = import.meta.env.VITE_API_BASE
+
 
   // Auto-login
   useEffect(() => {

@@ -5,6 +5,8 @@ import Navbar from "./Navbar"
 import Sidebar from "./Sidebar"
 import axios from "axios"
 
+const API_BASE = import.meta.env.VITE_API_BASE
+
 const Layout = ({ user, onLogout }) => {
   const [tasks, setTasks] = useState([])
   const [loading, setLoading] = useState(true)
@@ -18,7 +20,7 @@ const Layout = ({ user, onLogout }) => {
       const token = localStorage.getItem("token")
       if (!token) throw new Error("No auth token found")
 
-      const { data } = await axios.get("http://localhost:4000/api/tasks/gp", {
+      const { data } = await axios.get(`${API_BASE}/api/tasks/gp`, {
         headers: { Authorization: `Bearer ${token}` }
       })
 
