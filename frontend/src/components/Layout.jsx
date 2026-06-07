@@ -20,7 +20,7 @@ const Layout = ({ user, onLogout }) => {
       const token = localStorage.getItem("token")
       if (!token) throw new Error("No auth token found")
 
-      const { data } = await axios.get(`${API_BASE}/api/tasks/gp`, {
+      const { data } = await axios.get(`${API_BASE}/api/tasks`, {
         headers: { Authorization: `Bearer ${token}` }
       })
 
