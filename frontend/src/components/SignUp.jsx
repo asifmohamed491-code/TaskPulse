@@ -5,7 +5,7 @@ import { UserPlus } from "lucide-react"
 import { Inputwrapper, FIELDS, BUTTONCLASSES, MESSAGE_SUCCESS, MESSAGE_ERROR } from '../assets/dummy'
 
 // Dummy & Constants
-const API_URL = import.meta.env.VITE_API_BASE
+const API_URL = import.meta.env.VITE_API_BASE.replace('/api/tasks', '')
 const INITIAL_FORM = { name: "", email: "", password: "" }
 
 const SignUp = ({ onSwitchMode }) => {

@@ -17,7 +17,7 @@ const Login = ({ onSubmit, onSwitchMode }) => {
   const [rememberMe, setRememberMe] = useState(false)
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const url = import.meta.env.VITE_API_BASE
+  const API = import.meta.env.VITE_API_BASE.replace('/api/tasks','')
 
 
   // Auto-login
@@ -27,7 +27,7 @@ const Login = ({ onSubmit, onSwitchMode }) => {
     if (token) {
       (async () => {
         try {
-          const { data } = await axios.get(`${url}/api/user/me`, {
+          const { data } = await axios.get(`${API}/api/user/me`, {
             headers: { Authorization: `Bearer ${token}` },
           })
           if (data.success) {
@@ -57,7 +57,7 @@ const Login = ({ onSubmit, onSwitchMode }) => {
 
     setLoading(true)
     try {
-      const { data } = await axios.post(`${url}/api/user/login`, formData)
+      const { data } = await axios.post(`${API}/api/user/login`, formData)
       if (!data.token) throw new Error(data.message || "Login failed.")
 
       localStorage.setItem("token", data.token)
